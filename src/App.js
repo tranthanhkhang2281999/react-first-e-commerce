@@ -29,10 +29,9 @@ class App extends React.Component {
             ...snapshot.data(),
           });
         });
-      } else {
-        // if userAuth is null, so set the current user to null
-        setCurrentUser(userAuth);
       }
+      // if userAuth is null, so set the current user to null
+      setCurrentUser(userAuth);
     });
   }
 

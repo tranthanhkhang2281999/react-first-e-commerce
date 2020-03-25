@@ -1,13 +1,13 @@
 const INITIAL_STATE = {
-  currentUser: null,
+  currentUser: null
 };
 
 const userReducer = (preState = INITIAL_STATE, action) => {
   const todo = {
     SET_CURRENT_USER: {
       ...preState,
-      currentUser: action.payload,
-    },
+      currentUser: action.payload
+    }
   };
 
   return todo[action.type] || preState;
