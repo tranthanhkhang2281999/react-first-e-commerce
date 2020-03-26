@@ -2,10 +2,10 @@ import React from 'react';
 
 import './sign-up.styles.scss';
 
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 export default class SignUp extends React.Component {
   constructor() {
@@ -15,7 +15,7 @@ export default class SignUp extends React.Component {
       displayName: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      confirmPassword: ''
     };
   }
 
@@ -32,7 +32,7 @@ export default class SignUp extends React.Component {
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
-        password,
+        password
       );
       await createUserProfileDocument(user, { displayName });
 
@@ -41,7 +41,7 @@ export default class SignUp extends React.Component {
         displayName: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        confirmPassword: ''
       });
     } catch (error) {
       console.error(error);
