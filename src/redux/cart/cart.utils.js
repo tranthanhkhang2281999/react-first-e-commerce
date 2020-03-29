@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const findCartItemIndex = (cartItems, item) => {
   return cartItems.findIndex(cartItem => cartItem.id === item.id);
 };
@@ -35,4 +36,17 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 
 export const clearItemFromCart = (cartItems, cartItemToClear) => {
   return cartItems.filter(cartItem => cartItem.id !== cartItemToClear.id);
+=======
+export const addItemToCart = (cartItems, cartItemToAdd) => {
+  let index = cartItems.findIndex(
+    cartItem => cartItem.name === cartItemToAdd.name,
+  );
+
+  if (index < 0) return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
+
+  const newCartItems = [...cartItems];
+  newCartItems[index].quantity++;
+
+  return newCartItems;
+>>>>>>> 3da4b773f416140875d71cfa78c75c1583709f10
 };
