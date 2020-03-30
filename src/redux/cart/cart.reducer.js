@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   addItemToCart,
   removeItemFromCart,
@@ -35,28 +34,6 @@ const cartReducer = (preState = INITIAL_STATE, action) => {
     default:
       return preState;
   }
-=======
-import { addItemToCart } from './cart.utils';
-
-const INITIAL_STATE = {
-  hidden: true,
-  cartItems: [],
-};
-
-const cartReducer = (preState = INITIAL_STATE, action) => {
-  const todo = {
-    TOGGLE_CART_HIDDEN: {
-      ...preState,
-      hidden: !preState.hidden,
-    },
-    ADD_ITEM: {
-      ...preState,
-      cartItems: addItemToCart(preState.cartItems, action.payload),
-    },
-  };
-
-  return todo[action.type] || preState;
->>>>>>> 3da4b773f416140875d71cfa78c75c1583709f10
 };
 
 export default cartReducer;
