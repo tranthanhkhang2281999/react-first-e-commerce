@@ -8,7 +8,11 @@ import {
 
 const FormInput = ({ handleChange, label, ...otherProps }) => (
   <GroupContainer>
-    <FormInputContainer onChange={handleChange} {...otherProps} />
+    <FormInputContainer
+      onChange={handleChange}
+      {...otherProps}
+      autoComplete='on'
+    />
     {label ? (
       <FormInputLabel className={otherProps.value.length ? 'shrink' : ''}>
         {label}

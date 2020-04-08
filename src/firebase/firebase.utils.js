@@ -10,7 +10,7 @@ const config = {
   storageBucket: 'react-first-e-commerce.appspot.com',
   messagingSenderId: '739374213640',
   appId: '1:739374213640:web:7a485739a78670d5a3ffbd',
-  measurementId: 'G-9VFDH91SC2',
+  measurementId: 'G-9VFDH91SC2'
 };
 
 export const addCollectionAndDocuments = async (
@@ -36,7 +36,7 @@ export const convertCollectionsSnapshopToMap = (collections) => {
       id: doc.id,
       title: title,
       routeName: encodeURI(title.toLowerCase()),
-      items: items,
+      items: items
     };
   });
 
@@ -62,7 +62,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createAt,
-        ...additionalData,
+        ...additionalData
       });
     } catch (error) {
       console.log('error creating user', error);
@@ -77,8 +77,17 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

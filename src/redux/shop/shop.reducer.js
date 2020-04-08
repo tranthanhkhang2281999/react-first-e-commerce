@@ -1,4 +1,4 @@
-import SHOP_ACTION_TYPES from './shop.types';
+import SHOP_ACTION_TYPES from './shop.types.js';
 
 const INITIAL_STATE = {
   isFetching: false,
